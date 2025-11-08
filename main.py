@@ -8,7 +8,7 @@ from threading import Thread
 app = Flask('')
 
 @app.route('/')
-def home():
+def home():Okq
     return "I'm alive!"
 
 def run():
