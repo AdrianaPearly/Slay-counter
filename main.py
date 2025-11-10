@@ -1,3 +1,20 @@
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "I'm alive!"
+
+def run():
+    app.run(host='0.0.0.0', port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
+
+
 import discord
 import json
 import os
@@ -59,6 +76,7 @@ token = os.getenv("TOKEN")
 if not token:
     raise ValueError("⚠️ No token found! Please check your .env file or environment variables.")
 
+keep_alive()
 client.run(token)
 
 
