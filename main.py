@@ -16,8 +16,13 @@ def keep_alive():
 
 
 import discord
-import json
 import os
+import json
+
+with open("config.json", "r", encoding="utf-8") as f:
+    config = json.load(f)
+
+token = config["TOKEN"]
 
 intents = discord.Intents.default()
 intents.messages = True
