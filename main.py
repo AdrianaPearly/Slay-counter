@@ -51,9 +51,11 @@ def save_counts():
 async def on_ready():
     print(f'We have logged in as {client.user}')
     load_counts()
+    print(f"Connected to {len(client.guilds)} guilds")  # Check if the bot sees your server
 
 @client.event
 async def on_message(message):
+    print(f"Message from {message.author}: {message.content}")
     if message.author == client.user:
         return
 
