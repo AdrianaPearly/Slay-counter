@@ -22,7 +22,7 @@ import json
 with open("config.json", "r", encoding="utf-8") as f:
     config = json.load(f)
 
-token = config["TOKEN"]
+token = parts["PART1"] + parts["PART2"] + parts["PART3"]
 
 intents = discord.Intents.default()
 intents.messages = True
