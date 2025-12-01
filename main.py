@@ -19,10 +19,16 @@ import discord
 import os
 import json
 
+import json
+
 with open("config.json", "r", encoding="utf-8") as f:
     config = json.load(f)
 
-token = parts["PART1"] + parts["PART2"] + parts["PART3"]
+# join the 3 token fragments
+token = config["PART1"] + config["PART2"] + config["PART3"]
+
+if not token:
+    raise ValueError("⚠️ No token found in config.json!")
 
 intents = discord.Intents.default()
 intents.messages = True
@@ -83,12 +89,12 @@ async def on_message(message):
 if not token:
     raise ValueError("⚠️ No token found! Please check your .env file or environment variables.") """
 
-with open("config.json", "r", encoding="utf-8") as f:
+"""with open("config.json", "r", encoding="utf-8") as f:
     config = json.load(f)
 
 token = config.get("TOKEN")
 if not token:
-    raise ValueError("⚠️ No token found in config.json!")
+    raise ValueError("⚠️ No token found in config.json!")"""
 
 
 keep_alive()
