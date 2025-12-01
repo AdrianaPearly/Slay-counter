@@ -76,10 +76,18 @@ async def on_message(message):
             stats_message += f"> **{sticker_name}**: {count} uses\n"
         await message.channel.send(stats_message)
 
-token = os.getenv("TOKEN")
+"""token = os.getenv("TOKEN")
 
 if not token:
-    raise ValueError("⚠️ No token found! Please check your .env file or environment variables.")
+    raise ValueError("⚠️ No token found! Please check your .env file or environment variables.") """
+
+with open("config.json", "r", encoding="utf-8") as f:
+    config = json.load(f)
+
+token = config.get("TOKEN")
+if not token:
+    raise ValueError("⚠️ No token found in config.json!")
+
 
 keep_alive()
 client.run(token)
